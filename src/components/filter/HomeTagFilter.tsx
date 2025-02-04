@@ -11,15 +11,14 @@ const HomeTagFilter = () => {
   const searchParams = useSearchParams();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-  // Initialize selected tags based on URL params
   useEffect(() => {
-    const tagsFromUrl = searchParams.get("filter");
-    if (tagsFromUrl) {
-      setSelectedTags(tagsFromUrl.split(","));
+    const filter = searchParams.get("filter");
+    if (filter) {
+      const tagList = filter.split(",");
+      setSelectedTags(tagList);
     }
   }, [searchParams]);
 
-  // Toggle tag selection and update URL
   const toggleTagSelection = (tag: string) => {
     const newSelectedTags = selectedTags.includes(tag)
       ? selectedTags.filter((item) => item !== tag)
@@ -27,7 +26,6 @@ const HomeTagFilter = () => {
 
     setSelectedTags(newSelectedTags);
 
-    // Update the URL with selected tags
     const params = new URLSearchParams(searchParams.toString());
     if (newSelectedTags.length > 0) {
       params.set("filter", newSelectedTags.join(","));
@@ -35,11 +33,8 @@ const HomeTagFilter = () => {
       params.delete("filter");
     }
 
-    // Update the URL without reloading the page
     router.push(`?${params.toString()}`, { scroll: false });
   };
-
-  console.log("Hello from the home tag filter");
 
   return (
     <div className="flex gap-4">

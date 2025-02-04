@@ -4,10 +4,10 @@ import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function LocalSearch({ searchQuery }: { searchQuery: string }) {
+export default function LocalSearch() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
+  const [debouncedQuery, setDebouncedQuery] = useState("");
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -25,9 +25,8 @@ export default function LocalSearch({ searchQuery }: { searchQuery: string }) {
     return () => clearTimeout(timeoutId);
   }, [debouncedQuery, router, searchParams]);
 
-  // Handle input changes and update the debounced query
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDebouncedQuery(e.target.value); // Update debouncedQuery on input change
+    setDebouncedQuery(e.target.value);
   };
 
   return (
@@ -36,7 +35,7 @@ export default function LocalSearch({ searchQuery }: { searchQuery: string }) {
       <input
         type="text"
         value={debouncedQuery}
-        onChange={handleSearch} // Directly handle the search input
+        onChange={handleSearch}
         className="outline-none bg-transparent placeholder:text-light-400 text-light-100 w-full"
         placeholder="Search a Question...."
       />

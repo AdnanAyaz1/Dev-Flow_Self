@@ -4,7 +4,7 @@ import LocalSearch from "@/components/search/LocalSearch";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 
-export default function Home({
+export default async function Home({
   searchParams,
 }: {
   searchParams: { search?: string; filter?: string };
@@ -78,7 +78,7 @@ export default function Home({
           <span className="paragraph-semibold text-white ">Ask a Question</span>
         </Link>
       </div>
-      <LocalSearch searchQuery={searchQuery} />
+      <LocalSearch />
       <HomeTagFilter />
       <div className="mt-[40px] space-y-[24px]">
         {filteredQuestions.length > 0 ? (
