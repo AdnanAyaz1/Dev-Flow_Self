@@ -32,6 +32,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
     }),
   ],
+  pages: {
+    error: "/sign-in",
+  },
   callbacks: {
     async jwt({ token, account, user }) {
       if (account) {
