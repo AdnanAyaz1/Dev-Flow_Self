@@ -3,9 +3,8 @@ interface FetchOptions extends RequestInit {
 }
 
 export async function fetchHandler(url: string, options: FetchOptions = {}) {
-  console.log("we entered the function");
   const {
-    timeout = 5000,
+    timeout = 10000,
     headers: customHeaders = {},
     ...restOptions
   } = options;
@@ -15,7 +14,7 @@ export async function fetchHandler(url: string, options: FetchOptions = {}) {
 
   const defaultHeaders: HeadersInit = {
     "Content-Type": "application/json",
-    Accept: "application/json",
+    accept: "application/json",
   };
 
   const headers: HeadersInit = { ...defaultHeaders, ...customHeaders };
@@ -26,7 +25,6 @@ export async function fetchHandler(url: string, options: FetchOptions = {}) {
   };
 
   const response = await fetch(url, config);
-  console.log("This is response => ", response);
   clearTimeout(id);
 
   return await response.json();

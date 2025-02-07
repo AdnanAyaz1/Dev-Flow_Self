@@ -22,19 +22,18 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (!isValid) {
           throw new Error("The Email or the Password is incorrect");
         }
-        return {
-          id: user._id.toString(),
-          email: user.email,
-          name: user.name,
-          image: user.image,
-          provider: "credentials", // Explicitly set provider for credentials login
-        };
+        if (user && isValid)
+          return {
+            id: user._id.toString(),
+            email: user.email,
+            name: user.name,
+            image: user.image,
+            provider: "credentials", // Explicitly set provider for credentials login
+          };
+        else return null;
       },
     }),
   ],
-  pages: {
-    error: "/sign-in",
-  },
   callbacks: {
     async jwt({ token, account, user }) {
       if (account) {

@@ -12,21 +12,85 @@ import {
   FormDescription,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { routes } from "@/constants/routes";
+import { toast } from "@/hooks/use-toast";
+import { api } from "@/lib/api";
 import { questionSchema } from "@/lib/zod-validation-schemas";
+import { Question } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { Types } from "mongoose";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
 import { z } from "zod";
 
-const QuestionForm = () => {
+const QuestionForm = ({
+  id,
+  question,
+}: {
+  id?: string;
+  question?: Question;
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof questionSchema>>({
     resolver: zodResolver(questionSchema),
-    defaultValues: { title: "", content: "", tags: [] },
+    defaultValues: {
+      title: question?.title || "",
+      content: question?.content || "",
+      tags: question?.tags || [],
+    },
   });
 
   const handleSubmit = async (data: z.infer<typeof questionSchema>) => {
-    console.log(data);
+    setIsLoading(true);
+    const userId = new Types.ObjectId(id);
+    try {
+      let res;
+      if (!question) {
+        res = await api.questions.ask_question({
+          title: data.title,
+          content: data.content,
+          tags: data.tags,
+          user: userId,
+        });
+      } else {
+        res = await api.questions.edit_question({
+          _id: question._id,
+          title: data.title,
+          content: data.content,
+          tags: data.tags,
+          user: userId,
+          oldTags: question.tags,
+        });
+      }
+      if (res.success) {
+        toast({
+          title: "Success",
+          description: res.message,
+          variant: "success",
+        });
+        router.push(routes.question_details(res.id));
+      } else {
+        toast({
+          title: "Error",
+          description: res.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Question Submission Failed",
+        description:
+          error instanceof Error ? error.message : "Something went wrong",
+        variant: "destructive",
+      });
+    }
+    setIsLoading(false);
   };
 
   const handleInputTags = (
@@ -35,7 +99,11 @@ const QuestionForm = () => {
   ) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const tagInput = e.currentTarget.value.trim();
+      const tagInput = e.currentTarget.value
+        .trim()
+        .toLowerCase()
+        .replace(/\./g, "") // Remove dots
+        .replace(/\s+/g, ""); // Remove all spaces
       // check if the tags are greater than 3
       if (field.value.length >= 3) {
         form.setError("tags", {
@@ -165,10 +233,16 @@ const QuestionForm = () => {
         />
 
         <Button
-          className="rounded-lg w-[173px] h-[45px] primary-gradient flex-center paragraph-semibold text-white mt-[64px] ml-auto"
+          className="rounded-lg w-[173px] h-[45px] primary-gradient flex-center paragraph-semibold text-white mt-[64px] ml-auto gap-4"
           type="submit"
+          disabled={isLoading}
         >
-          Submit Question
+          {isLoading && <ReloadIcon className="w-4 h-4 animate-spin" />}
+          {isLoading
+            ? "Submitting"
+            : question
+              ? "Edit Question"
+              : " Submit Question"}
         </Button>
       </form>
     </Form>

@@ -41,7 +41,7 @@ const SignIn = () => {
       password: data.password,
       redirect: false,
     });
-
+    console.log("This is response from sign in", res);
     if (res?.error) {
       toast({
         title: "Sign In Failed",

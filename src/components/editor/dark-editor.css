@@ -67,9 +67,14 @@
   background-color: #ffffff; /* Light gray */
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
+  position: static;
 }
 
 /* Dark Mode */
 .dark ._toolbarRoot_uazmk_160 {
   background-color: #212734; /* Dark gray */
+}
+
+._contentEditable_uazmk_379 {
+  min-height: 219px;
 }

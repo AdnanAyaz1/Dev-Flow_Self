@@ -1,13 +1,19 @@
+import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/auth-forms/QuestionForm";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const page = () => {
+const Page = async () => {
+  const session = await auth();
+  if (!session) {
+    redirect("/sign-in");
+  }
   return (
     <div>
       <h1 className="h1-bold mb-[36px]">Ask a Question</h1>
-      <QuestionForm />
+      <QuestionForm id={session.user.id} />
     </div>
   );
 };
 
-export default page;
+export default Page;

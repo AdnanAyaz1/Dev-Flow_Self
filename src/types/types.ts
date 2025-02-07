@@ -13,8 +13,8 @@ export interface Author {
 export interface Question {
   _id: string;
   title: string;
-  description: string;
-  tags: Tag[];
+  content: string;
+  tags: string[];
   author: Author;
   upvotes: number;
   answers: number;

@@ -35,8 +35,8 @@ const SignUp = () => {
 
   const handleSubmit = async (data: z.infer<typeof SignUpSchema>) => {
     setIsLoading(true);
-    const res = await api.users.create(data);
-    console.log("res", res);
+    const res = await api.users.registor(data);
+    console.log(res);
     if (res.success == true) {
       toast({
         title: "Success",
