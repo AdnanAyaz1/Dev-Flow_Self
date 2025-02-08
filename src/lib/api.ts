@@ -1,6 +1,7 @@
 import { IQuestion } from "./../database-models/question.model";
 import { IUser } from "@/database-models/user.model";
 import { fetchHandler } from "./handlers/fetchHandler";
+import { ProcessedSearchParams } from "@/types/types";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
@@ -27,6 +28,11 @@ export const api = {
     edit_question: (data: Partial<IQuestion>) =>
       fetchHandler(`${API_BASE_URL}/questions`, {
         method: "PATCH",
+        body: JSON.stringify(data),
+      }),
+    get_question: (data: ProcessedSearchParams) =>
+      fetchHandler(`${API_BASE_URL}/questions/get-questions`, {
+        method: "POST",
         body: JSON.stringify(data),
       }),
   },

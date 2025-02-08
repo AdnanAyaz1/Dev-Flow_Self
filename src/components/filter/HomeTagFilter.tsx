@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Tag from "../Reusable/Tag";
 
-const tags = ["Javascript", "Next Js", "React", "Express Js"];
+const tags = ["Newest", "Recommended Questions", "Un Answered"];
 
 const HomeTagFilter = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const HomeTagFilter = () => {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   useEffect(() => {
-    const filter = searchParams.get("filter");
+    const filter = searchParams.get("sort");
     if (filter) {
       const tagList = filter.split(",");
       setSelectedTags(tagList);
@@ -28,9 +28,9 @@ const HomeTagFilter = () => {
 
     const params = new URLSearchParams(searchParams.toString());
     if (newSelectedTags.length > 0) {
-      params.set("filter", newSelectedTags.join(","));
+      params.set("sort", newSelectedTags.join(","));
     } else {
-      params.delete("filter");
+      params.delete("sort");
     }
 
     router.push(`?${params.toString()}`, { scroll: false });

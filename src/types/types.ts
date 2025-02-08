@@ -1,23 +1,28 @@
-// types.ts
-export interface Tag {
-  _id: string;
-  name: string;
-}
+import { IAnswer } from "@/database-models/question.model";
+import { IUser } from "@/database-models/user.model";
 
-export interface Author {
-  _id: string;
-  name: string;
-  image: string;
-}
-
-export interface Question {
+export interface QuestionType {
   _id: string;
   title: string;
   content: string;
   tags: string[];
-  author: Author;
-  upvotes: number;
-  answers: number;
+  author: IUser;
+  upVotes: number;
+  answers: IAnswer[];
   views: number;
   createdAt: Date;
+}
+
+export interface ProcessedSearchParams {
+  searchQuery: string;
+  filter: string[];
+  sort: string[];
+  pageNumber: string;
+  pageLimit: number;
+}
+
+export interface MySearchParams {
+  search?: string;
+  filter?: string;
+  page?: number;
 }

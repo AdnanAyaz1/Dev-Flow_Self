@@ -16,7 +16,7 @@ import { routes } from "@/constants/routes";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/lib/api";
 import { questionSchema } from "@/lib/zod-validation-schemas";
-import { Question } from "@/types/types";
+import { QuestionType } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { Types } from "mongoose";
@@ -32,7 +32,7 @@ const QuestionForm = ({
   question,
 }: {
   id?: string;
-  question?: Question;
+  question?: QuestionType;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -56,7 +56,7 @@ const QuestionForm = ({
           title: data.title,
           content: data.content,
           tags: data.tags,
-          user: userId,
+          author: userId,
         });
       } else {
         res = await api.questions.edit_question({
@@ -64,7 +64,7 @@ const QuestionForm = ({
           title: data.title,
           content: data.content,
           tags: data.tags,
-          user: userId,
+          author: userId,
           oldTags: question.tags,
         });
       }
@@ -102,8 +102,8 @@ const QuestionForm = ({
       const tagInput = e.currentTarget.value
         .trim()
         .toLowerCase()
-        .replace(/\./g, "") // Remove dots
-        .replace(/\s+/g, ""); // Remove all spaces
+        .replace(/\./g, ""); // Remove dots
+
       // check if the tags are greater than 3
       if (field.value.length >= 3) {
         form.setError("tags", {
@@ -114,10 +114,10 @@ const QuestionForm = ({
       }
 
       // check if the length is greater than 15
-      if (tagInput.length > 15) {
+      if (tagInput.length > 30) {
         form.setError("tags", {
           type: "manual",
-          message: "Tag should be less than 15 characters",
+          message: "Tag should be less than 30 characters",
         });
         return;
       }
@@ -216,6 +216,7 @@ const QuestionForm = ({
                         <Tag
                           tag={tag}
                           key={i}
+                          icon={true}
                           remove={true}
                           handleRemove={() => handleRemoveTag(tag, field)}
                         />
@@ -224,7 +225,7 @@ const QuestionForm = ({
                 </div>
               </FormControl>
               <FormDescription>
-                Add up to 5 tags to describe what your question is about. Start
+                Add up to 3 tags to describe what your question is about. Start
                 typing to see suggestions.
               </FormDescription>
               <FormMessage />

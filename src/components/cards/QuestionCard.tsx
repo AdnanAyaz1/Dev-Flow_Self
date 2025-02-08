@@ -3,12 +3,16 @@ import Tag from "../Reusable/Tag";
 import Image from "next/image";
 import QuestionCardStats from "../Reusable/QuestionCardStats";
 import { formatDistanceToNow } from "date-fns";
-import { Question } from "@/types/types";
+import { QuestionType } from "@/types/types";
 
-const QuestionCard = async ({ question }: { question: Question }) => {
+const QuestionCard = async ({ question }: { question: QuestionType }) => {
   const stats = [
-    { icon: "/icons/like.svg", number: question.upvotes, text: "Votes" },
-    { icon: "/icons/answers.svg", number: question.answers, text: "Answers" },
+    { icon: "/icons/like.svg", number: question.upVotes, text: "Votes" },
+    {
+      icon: "/icons/answers.svg",
+      number: question.answers.length,
+      text: "Answers",
+    },
     { icon: "/icons/view.svg", number: question.views, text: "Views" },
   ];
   return (
@@ -17,14 +21,14 @@ const QuestionCard = async ({ question }: { question: Question }) => {
         {question.title}
       </h1>
       <div className="mt-[14px] flex gap-4">
-        {question.tags.map((filter, i) => (
-          <Tag tag={filter.name} key={i} icon={false} />
+        {question.tags.map((tag: string, i) => (
+          <Tag tag={tag} key={i} icon={true} />
         ))}
       </div>
       <div className="flex-between mt-[24px]">
         <div className="flex items-center gap-2">
           <Image
-            src={question.author.image || ""}
+            src={question.author?.image || "/images/person-placeholder.jpeg"}
             alt="user"
             height={20}
             width={20}

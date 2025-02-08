@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/dark-mode/Theme-Provider";
 import { SessionProvider } from "next-auth/react";
-import { auth } from "@/auth";
+import mongoose from "mongoose";
 import { Toaster } from "@/components/ui/toaster";
+import { auth } from "@/auth";
 
 const inter = localFont({
   src: "./fonts/InterVf.ttf",
@@ -31,6 +32,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await auth();
+  mongoose.set("strictPopulate", false);
   return (
     <html lang="en" suppressHydrationWarning>
       <head>

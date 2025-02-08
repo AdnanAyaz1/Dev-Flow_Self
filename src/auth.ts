@@ -65,7 +65,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           token.providerAccountId = existingUser.providerAccountId;
         }
       }
-      if (user) {
+      if (account?.provider === "credentials") {
         // If the user logs in using credentials
         token.sub = user.id;
         token.provider = "credentials";

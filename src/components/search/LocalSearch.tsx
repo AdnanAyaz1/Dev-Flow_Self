@@ -20,7 +20,7 @@ export default function LocalSearch() {
         params.delete("search");
         router.push(`?${params.toString()}`, { scroll: false });
       }
-    }, 500);
+    }, 200);
 
     return () => clearTimeout(timeoutId);
   }, [debouncedQuery, router, searchParams]);
