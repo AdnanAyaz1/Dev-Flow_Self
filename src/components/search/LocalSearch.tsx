@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-export default function LocalSearch() {
+export default function LocalSearch({ placeholder }: { placeholder: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [debouncedQuery, setDebouncedQuery] = useState("");
@@ -37,7 +37,7 @@ export default function LocalSearch() {
         value={debouncedQuery}
         onChange={handleSearch}
         className="outline-none bg-transparent placeholder:text-light-400 text-light-100 w-full"
-        placeholder="Search a Question...."
+        placeholder={`Search a ${placeholder}....`}
       />
     </div>
   );

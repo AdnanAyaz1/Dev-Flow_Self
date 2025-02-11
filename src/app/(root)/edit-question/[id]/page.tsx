@@ -1,4 +1,4 @@
-import QuestionForm from "@/components/forms/auth-forms/QuestionForm";
+import QuestionForm from "@/components/forms/QuestionForm";
 import Question from "@/database-models/question.model";
 import dbConnect from "@/lib/database-connection";
 import React from "react";

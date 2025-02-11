@@ -76,8 +76,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async session({ session, token }) {
       // Attach user ID to the session
       session.user.id = token.sub as string;
-      session.user.provider = token.provider as string;
-      session.user.providerAccountId = token.providerAccountId as string;
+      // session.user.provider = token.provider as string;
+      // session.user.providerAccountId = token.providerAccountId as string;
       return session;
     },
   },

@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import QuestionForm from "@/components/forms/auth-forms/QuestionForm";
+import QuestionForm from "@/components/forms/QuestionForm";
 import { redirect } from "next/navigation";
 import React from "react";
 

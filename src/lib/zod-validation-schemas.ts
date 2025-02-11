@@ -56,3 +56,7 @@ export const questionSchema = z.object({
     .min(1, { message: "At least one tag is required." })
     .max(3, { message: "Cannot add more than 3 tags." }),
 });
+
+export const AnswerSchema = z.object({
+  content: z.string().min(1, { message: "Content is required" }),
+});

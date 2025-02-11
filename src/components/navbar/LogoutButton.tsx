@@ -14,7 +14,7 @@ const LogoutButton = () => {
     });
     setTimeout(() => {
       window.location.href = "/";
-    }, 500);
+    }, 100);
   };
 
   return (

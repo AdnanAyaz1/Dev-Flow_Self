@@ -1,10 +1,10 @@
-import QuestionCard from "@/components/cards/QuestionCard";
+import QuestionCards from "@/components/cards/QuestionCards";
 import HomeTagFilter from "@/components/filter/HomeTagFilter";
 import { PaginationComponent } from "@/components/pagination";
 import LocalSearch from "@/components/search/LocalSearch";
 import { routes } from "@/constants/routes";
 import { api } from "@/lib/api";
-import { QuestionType } from "@/types/types";
+
 import Link from "next/link";
 
 export default async function Home({
@@ -48,15 +48,7 @@ export default async function Home({
         </div>
         <LocalSearch />
         <HomeTagFilter />
-        <div className="mt-[40px] space-y-[24px]">
-          {questions && questions.length > 0 ? (
-            questions.map((ques: QuestionType) => (
-              <QuestionCard key={ques._id} question={ques} />
-            ))
-          ) : (
-            <p>No questions found</p>
-          )}
-        </div>
+        <QuestionCards questions={questions} />
       </div>
       {noOfPages > 1 && <PaginationComponent noOfPages={noOfPages} />}
     </main>

@@ -1,11 +1,15 @@
+"use client";
 import React from "react";
 import Tag from "../Reusable/Tag";
 import Image from "next/image";
 import QuestionCardStats from "../Reusable/QuestionCardStats";
 import { formatDistanceToNow } from "date-fns";
 import { QuestionType } from "@/types/types";
+import { useRouter } from "next/navigation";
+import { routes } from "@/constants/routes";
 
-const QuestionCard = async ({ question }: { question: QuestionType }) => {
+const QuestionCard = ({ question }: { question: QuestionType }) => {
+  const router = useRouter();
   const stats = [
     { icon: "/icons/like.svg", number: question.upVotes, text: "Votes" },
     {
@@ -16,7 +20,10 @@ const QuestionCard = async ({ question }: { question: QuestionType }) => {
     { icon: "/icons/view.svg", number: question.views, text: "Views" },
   ];
   return (
-    <div className="rounded-lg bg-light-900 border-[1px] border-[#C8CBD954] shadow-question-card-shadow-light px-[45px] py-[36px] dark:dark-gradient dark:border-none dark:shadow-question-card-dark dark:backdrop-blur-83 ">
+    <div
+      className="rounded-lg bg-light-900 border-[1px] border-[#C8CBD954] shadow-question-card-shadow-light px-[45px] py-[36px] dark:dark-gradient dark:border-none dark:shadow-question-card-dark dark:backdrop-blur-83 cursor-pointer"
+      onClick={() => router.push(routes.question_details(question._id))}
+    >
       <h1 className="h3-semibold text-dark-200 dark:text-light-900">
         {question.title}
       </h1>

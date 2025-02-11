@@ -35,5 +35,26 @@ export const api = {
         method: "POST",
         body: JSON.stringify(data),
       }),
+    get_question_byID: (data: { questionId: string; userId: string }) =>
+      fetchHandler(`${API_BASE_URL}/questions/get-question-byId`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+  },
+  answers: {
+    post_answer: (data: {
+      questionId: string;
+      authorId: string;
+      content: string;
+    }) =>
+      fetchHandler(`${API_BASE_URL}/answers`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+    update_vote: (data: { id: string; type: string; user: string }) =>
+      fetchHandler(`${API_BASE_URL}/answers/votes`, {
+        method: "PATCH",
+        body: JSON.stringify(data),
+      }),
   },
 };

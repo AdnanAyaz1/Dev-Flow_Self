@@ -34,7 +34,7 @@ export default async function RootLayout({
   const session = await auth();
   mongoose.set("strictPopulate", false);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <head>
         <link
           rel="stylesheet"

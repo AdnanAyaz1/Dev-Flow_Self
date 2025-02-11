@@ -5,31 +5,22 @@ interface VoteCaster {
   type: "upVote" | "downVote"; // Enum to ensure only valid values
 }
 
-export interface IQuestion extends Document {
-  title: string;
+export interface IAnswer extends Document {
   content: string;
-  tags: string[];
   author: Types.ObjectId;
+  questionId: string;
   upVotes: number;
   downVotes: number;
-  answers: Types.ObjectId[];
-  views: number;
-  oldTags: string[]; // just incase of editing the question it is needed
-  viewedBy: string[];
   voteCastedBy: VoteCaster[];
 }
 
-const QuestionSchema = new Schema<IQuestion>(
+const AnswerSchema = new Schema<IAnswer>(
   {
-    title: { type: String, required: true },
     content: { type: String, required: true },
-    tags: [{ type: String, required: true }],
     author: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    questionId: { type: String, required: true },
     upVotes: { type: Number, default: 0 },
     downVotes: { type: Number, default: 0 },
-    answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],
-    views: { type: Number, default: 0 },
-    viewedBy: { type: [String], default: [] },
     voteCastedBy: [
       {
         id: { type: String }, // Reference to User who voted
@@ -37,11 +28,9 @@ const QuestionSchema = new Schema<IQuestion>(
       },
     ],
   },
-
   { timestamps: true }
 );
 
-const Question =
-  models?.Question || model<IQuestion>("Question", QuestionSchema);
+const Answer = models?.Answer || model<IAnswer>("Answer", AnswerSchema);
 
-export default Question;
+export default Answer;
