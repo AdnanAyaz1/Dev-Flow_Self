@@ -172,6 +172,18 @@ body {
     max-height: 50px !important;
   }
 
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
+    background: #888;
+    padding: 5px;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 50px;
+    height: 20px !important;
+    max-height: 50px !important;
+  }
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #555;
   }

@@ -1,6 +1,6 @@
 import { Schema, model, models, Document, Types } from "mongoose";
 
-interface VoteCaster {
+export interface VoteCaster {
   id: string; // Reference to User
   type: "upVote" | "downVote"; // Enum to ensure only valid values
 }

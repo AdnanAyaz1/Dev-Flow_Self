@@ -6,13 +6,7 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const Query = await request.json();
-  const {
-    pageNumber,
-    pageSize = 3,
-    searchQuery = "",
-    filter = [],
-    sort = [],
-  } = Query;
+  const { pageNumber, pageSize = 3, searchQuery = "", sort = [] } = Query;
   const skip = (Number(pageNumber) - 1) * pageSize;
   const limit = Number(pageSize);
   await dbConnect();
@@ -35,10 +29,9 @@ export async function POST(request: Request) {
     sortCriteria = { createdAt: -1 };
   }
   if (sort.includes("recommended questions")) {
-    sortCriteria = { upvotes: -1 };
-  } else {
-    sortCriteria = { createdAt: 1 };
+    sortCriteria = { upVotes: -1 };
   }
+
   const totalQuestions = await Question.countDocuments();
   const noOfPages = Math.ceil(totalQuestions / pageSize);
   const questions = await Question.find(filterQuery)

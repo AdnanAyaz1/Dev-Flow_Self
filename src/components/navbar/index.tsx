@@ -20,7 +20,7 @@ const Navbar = async () => {
         {/* Dark Mode Toggler */}
         <DarkModeToggle />
         {/* User Profile */}
-        <Link href="/user">
+        <Link href={`/user/${session?.user.id}`}>
           {session?.user ? (
             <Image
               src={session?.user?.image || "/images/person-placeholder.jpeg"}

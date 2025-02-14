@@ -4,7 +4,7 @@ interface FetchOptions extends RequestInit {
 
 export async function fetchHandler(url: string, options: FetchOptions = {}) {
   const {
-    timeout = 10000,
+    timeout = 30000,
     headers: customHeaders = {},
     ...restOptions
   } = options;

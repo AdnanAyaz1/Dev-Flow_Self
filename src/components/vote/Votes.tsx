@@ -10,6 +10,7 @@ const Votes = ({
   alt,
   type,
   session,
+  questionId,
   answerId,
 }: {
   src: string;
@@ -17,7 +18,8 @@ const Votes = ({
   val: number;
   type: "upVote" | "downVote";
   session: string;
-  answerId: string;
+  answerId?: string;
+  questionId?: string;
 }) => {
   const router = useRouter(); // ✅ Initialize router
 
@@ -32,10 +34,11 @@ const Votes = ({
     }
 
     try {
-      const res = await api.answers.update_vote({
-        id: answerId,
+      const res = await api.votes.update_vote({
+        id: questionId ? (questionId as string) : (answerId as string),
         type,
         user: session,
+        responseType: questionId ? "question" : "answer",
       });
 
       if (res.success) {

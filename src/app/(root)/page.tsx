@@ -7,16 +7,11 @@ import { api } from "@/lib/api";
 
 import Link from "next/link";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: {
-    search?: string;
-    filter?: string;
-    page?: string;
-    sort?: string;
-  };
-}) {
+export interface SearchParams {
+  searchParams: Promise<{ [key: string]: string }>;
+}
+
+export default async function Home({ searchParams }: SearchParams) {
   const awaitedSearchParams = await searchParams;
   const searchQuery = awaitedSearchParams?.search?.toLowerCase() || "";
   const filter = awaitedSearchParams?.filter?.toLowerCase().split(",") || [];
@@ -46,7 +41,7 @@ export default async function Home({
             </span>
           </Link>
         </div>
-        <LocalSearch />
+        <LocalSearch placeholder="Question" />
         <HomeTagFilter />
         <QuestionCards questions={questions} />
       </div>

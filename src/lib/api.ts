@@ -51,8 +51,20 @@ export const api = {
         method: "POST",
         body: JSON.stringify(data),
       }),
-    update_vote: (data: { id: string; type: string; user: string }) =>
-      fetchHandler(`${API_BASE_URL}/answers/votes`, {
+    generate_ai_answer: (data: { questionId: string; authorId: string }) =>
+      fetchHandler(`${API_BASE_URL}/answers/ai-answer`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+  },
+  votes: {
+    update_vote: (data: {
+      id: string;
+      type: string;
+      user: string;
+      responseType: string;
+    }) =>
+      fetchHandler(`${API_BASE_URL}/votes`, {
         method: "PATCH",
         body: JSON.stringify(data),
       }),

@@ -11,6 +11,7 @@ export interface IUser {
   provider: string; // Store the provider (e.g., 'github', 'google', 'credentials')
   providerAccountId: string; // Store the unique provider account ID
   password?: string; // For credentials-based login, if password is needed
+  bookmarks?: string[];
 }
 
 export interface IUserDoc extends IUser, Document {}
@@ -19,6 +20,7 @@ const UserSchema = new Schema<IUser>(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
+    bookmarks: [String],
     bio: { type: String },
     image: { type: String },
     location: { type: String },

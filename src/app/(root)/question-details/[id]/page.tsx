@@ -1,10 +1,13 @@
 import { auth } from "@/auth";
 import AnswersFetch from "@/components/AnswersFetch";
+import Bookmark from "@/components/Bookmark";
 import Preview from "@/components/editor/Preview";
 import AnswerForm from "@/components/forms/AnswerForm";
 import QuestionCardStats from "@/components/Reusable/QuestionCardStats";
 import Tag from "@/components/Reusable/Tag";
 import AnswersSort from "@/components/sort/AnswersSort";
+import Votes from "@/components/vote/Votes";
+import User from "@/database-models/user.model";
 import { api } from "@/lib/api";
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
@@ -17,9 +20,10 @@ const QuestionDetails = async ({
   params: { id: string };
   searchParams: { sort: string };
 }) => {
-  const { id } = await params;
-  const { sort } = await searchParams;
+  const { id } = params;
+  const { sort } = searchParams;
   const session = await auth();
+
   const { question, incrementView } = await api.questions.get_question_byID({
     questionId: id,
     userId: session?.user.id as string,
@@ -27,7 +31,7 @@ const QuestionDetails = async ({
   if (incrementView) {
     question.views += 1;
   }
-
+  const user = await User.findById(session?.user.id);
   const formattedContent = question?.content
     .replace(/\\/g, "")
     .replace(/&#x20;/g, "");
@@ -61,33 +65,26 @@ const QuestionDetails = async ({
               </p>
             </div>
             <div className="flex gap-[10px]">
-              <div className="flex-center gap-[6px]">
-                <Image
-                  src={"/icons/upvote.svg"}
-                  alt="upvote-icon"
-                  height={15}
-                  width={15}
-                />
-                <p className="subtle-medium text-light-900 flex-center rounded-sm bg-dark-400 size-[16px]">
-                  {question?.upVotes}
-                </p>
-              </div>
-              <div className="flex-center gap-[6px]">
-                <Image
-                  src={"/icons/downvote.svg"}
-                  alt="upvote-icon"
-                  height={15}
-                  width={15}
-                />
-                <p className="subtle-medium text-light-900 flex-center rounded-sm bg-dark-400 size-[16px]">
-                  {question?.upVotes}
-                </p>
-              </div>
-              <Image
-                src={"/icons/bookmark.svg"}
-                alt="bookmark-icon"
-                height={15}
-                width={15}
+              <Votes
+                type="upVote"
+                src="/icons/upvote.svg"
+                alt="upVote"
+                val={question.upVotes}
+                session={session?.user.id as string}
+                questionId={question._id}
+              />
+              <Votes
+                type="downVote"
+                src="/icons/downvote.svg"
+                alt="downVote"
+                val={question.downVotes}
+                session={session?.user.id as string}
+                questionId={question._id}
+              />
+              <Bookmark
+                questionId={JSON.parse(JSON.stringify(question._id))}
+                bookmarks={user.bookmarks}
+                userId={user._id}
               />
             </div>
           </div>
@@ -130,7 +127,7 @@ const QuestionDetails = async ({
           {/* Answers */}
 
           {question.answers.length > 0 && (
-            <section className="mt-[50px]">
+            <section className="my-[50px] ">
               {/* Answer Controls */}
               <div className="flex-between">
                 <h1 className="paragraph-medium">

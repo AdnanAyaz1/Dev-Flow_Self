@@ -9,12 +9,14 @@ const Answers = async ({ id }: { id: string }) => {
   const answer = await Answer.findById(id).populate("author", "name image");
 
   const formattedContent = answer.content
+    .toString()
     .replace(/\\/g, "")
     .replace(/#x20/g, "");
+
   const session = await auth();
 
   return (
-    <div className="my-4">
+    <div className="my-4 mr-2">
       {/* Answer Content */}
       <div className="mt-6">
         <div className="flex-between">

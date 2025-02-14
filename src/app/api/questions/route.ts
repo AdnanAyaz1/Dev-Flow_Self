@@ -17,7 +17,9 @@ export async function POST(request: Request) {
     if (question) {
       // Process tags sequentially to avoid race conditions
       for (const tagTitle of data.tags) {
-        const tagExists = await Tag.findOne({ title: tagTitle });
+        const tagExists = await Tag.findOne({
+          title: { $regex: new RegExp(tagTitle, "i") },
+        });
 
         if (tagExists) {
           // If tag exists, increment questions count

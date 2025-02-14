@@ -1,12 +1,13 @@
 import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/QuestionForm";
+import { routes } from "@/constants/routes";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const Page = async () => {
   const session = await auth();
   if (!session) {
-    redirect("/sign-in");
+    redirect(routes.signIn);
   }
   return (
     <div>
