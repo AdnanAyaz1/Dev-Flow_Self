@@ -3,7 +3,7 @@ import User from "@/database-models/user.model";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function PATCH(request: Request) {
   const { name, email, password } = await request.json();
   try {
     await dbConnect();

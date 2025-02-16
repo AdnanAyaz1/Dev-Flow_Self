@@ -16,9 +16,7 @@ const LoadMore = ({ datalength }: { datalength: number }) => {
   };
   const handleShowLess = () => {
     const params = new URLSearchParams(searchParams.toString());
-    if (index !== 3) setIndex((pre) => pre - 3);
-    const newIndex = index - 3;
-    params.set("index", String(newIndex));
+    params.set("index", String(3));
     router.push(`?${params.toString()}`, { scroll: false });
   };
   return (
@@ -31,13 +29,15 @@ const LoadMore = ({ datalength }: { datalength: number }) => {
           Load More
         </Button>
       )}
-      {Number(searchParams.get("index")) >= datalength && (
+      {Number(searchParams.get("index")) >= datalength && datalength ? (
         <Button
           className="primary-gradient text-white mx-auto my-6 flex-center"
           onClick={handleShowLess}
         >
           Show Less
         </Button>
+      ) : (
+        <></>
       )}
     </div>
   );

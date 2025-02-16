@@ -5,4 +5,6 @@ export const routes = {
   signUp: "/sign-up",
   question_details: (id: string) => `/question-details/${id}`,
   edit_question: (id: string) => `/edit-question/${id}`,
+  edit_user: (id: string) => `/user/${id}`,
+  user_info: (id: string) => `/user/info/${id}`,
 };

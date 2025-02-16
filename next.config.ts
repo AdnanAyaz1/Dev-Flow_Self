@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
- 
   serverExternalPackages: ["pino", "pino-pretty"],
+
   images: {
     remotePatterns: [
       {
@@ -18,6 +18,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
         port: "",
       },
     ],

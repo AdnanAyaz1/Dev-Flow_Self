@@ -1,12 +1,12 @@
 import Answer from "@/database-models/answer.model";
 import Question, { VoteCaster } from "@/database-models/question.model";
+import User from "@/database-models/user.model";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
 
 export async function PATCH(req: Request) {
   const { id, type, user, responseType } = await req.json();
   await dbConnect();
-
   try {
     // waht will i get -> id of answer , the type of vote , and user id
     const res =
@@ -24,12 +24,18 @@ export async function PATCH(req: Request) {
     //-> Condition 1 the user is doing it for the first time
     if (!userVote) {
       if (type == "upVote") {
+        await User.findByIdAndUpdate(responseType.author, {
+          $inc: { reputation: 1 },
+        });
         res.upVotes += 1;
         res.voteCastedBy.push({
           id: user,
           type,
         });
       } else {
+        await User.findByIdAndUpdate(responseType.author, {
+          $inc: { reputation: -1 },
+        });
         res.downVotes += 1;
         res.voteCastedBy.push({
           id: user,
@@ -53,10 +59,16 @@ export async function PATCH(req: Request) {
         return voteCaster;
       });
       if (type == "upVote") {
+        await User.findByIdAndUpdate(responseType.author, {
+          $inc: { reputation: 1 },
+        });
         res.upVotes += 1;
         res.downVotes -= 1;
         res.voteCastedBy = newVoteCasters;
       } else {
+        await User.findByIdAndUpdate(responseType.author, {
+          $inc: { reputation: -1 },
+        });
         res.downVotes += 1;
         res.upVotes -= 1;
         res.voteCastedBy = newVoteCasters;

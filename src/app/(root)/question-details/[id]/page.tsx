@@ -58,7 +58,7 @@ const QuestionDetails = async ({
                 alt="user-image"
                 height={25}
                 width={25}
-                className="object-cover rounded-full"
+                className="object-cover rounded-full aspect-square"
               />
               <p className="paragraph-semibold text-light-700">
                 {question?.author.name}
@@ -82,9 +82,9 @@ const QuestionDetails = async ({
                 questionId={question._id}
               />
               <Bookmark
-                questionId={JSON.parse(JSON.stringify(question._id))}
-                bookmarks={user.bookmarks}
-                userId={user._id}
+                questionId={JSON.parse(JSON.stringify(question?._id))}
+                bookmarks={user?.bookmarks || []}
+                userId={user?._id}
               />
             </div>
           </div>
@@ -120,7 +120,7 @@ const QuestionDetails = async ({
           <Preview formattedContent={formattedContent as string} />
           {/* tags */}
           <div className="mt-[14px] flex gap-4">
-            {question?.tags.map((tag: string, i) => (
+            {question?.tags.map((tag: string, i: number) => (
               <Tag tag={tag} key={i} icon={true} />
             ))}
           </div>

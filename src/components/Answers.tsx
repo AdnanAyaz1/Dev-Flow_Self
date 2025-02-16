@@ -27,7 +27,7 @@ const Answers = async ({ id }: { id: string }) => {
                 alt="user-image"
                 height={25}
                 width={25}
-                className="object-cover rounded-full"
+                className="aspect-square object-cover rounded-full"
               />
               <p className="paragraph-semibold text-light-800">
                 {answer?.author.name}

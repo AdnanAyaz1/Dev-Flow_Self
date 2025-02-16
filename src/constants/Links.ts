@@ -7,7 +7,7 @@ interface Link {
 export const links: Link[] = [
   { link: "Home", icon: "/icons/home.svg", route: "/" },
   { link: "Collections", icon: "/icons/star.svg", route: "/collections" },
-  { link: "Find Jobs", icon: "/icons/briefcase.svg", route: "/jobs" },
+  // { link: "Find Jobs", icon: "/icons/briefcase.svg", route: "/jobs" },
   { link: "Tags", icon: "/icons/tag.svg", route: "/tags" },
   {
     link: "Communities",
@@ -19,9 +19,9 @@ export const links: Link[] = [
     icon: "/icons/askQuestion.svg",
     route: "/ask-question",
   },
-  {
-    link: "Recommended Questions",
-    icon: "/icons/communities.svg",
-    route: "/recommended-questions",
-  },
+  // {
+  //   link: "Recommended Questions",
+  //   icon: "/icons/communities.svg",
+  //   route: "/recommended-questions",
+  // },
 ];

@@ -1,7 +1,7 @@
 import { IQuestion } from "./../database-models/question.model";
 import { IUser } from "@/database-models/user.model";
 import { fetchHandler } from "./handlers/fetchHandler";
-import { ProcessedSearchParams } from "@/types/types";
+import { ProcessedSearchParams, UserType } from "@/types/types";
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000/api";
@@ -16,6 +16,11 @@ export const api = {
     log_in: (userData: Partial<IUser>) =>
       fetchHandler(`${API_BASE_URL}/users/sign-in`, {
         method: "POST",
+        body: JSON.stringify(userData),
+      }),
+    update_user: (userData: Partial<UserType>) =>
+      fetchHandler(`${API_BASE_URL}/users/update-user`, {
+        method: "PATCH",
         body: JSON.stringify(userData),
       }),
   },

@@ -60,3 +60,11 @@ export const questionSchema = z.object({
 export const AnswerSchema = z.object({
   content: z.string().min(1, { message: "Content is required" }),
 });
+
+export const editUserSchema = z.object({
+  name: z.string().min(1, { message: "Name is required" }),
+  portfolio: z.string().min(1, { message: "Portfolio is required" }),
+  location: z.string().min(1, { message: "Location is required" }),
+  bio: z.string().min(1, { message: "Bio is required" }),
+  image: z.string().optional(),
+});

@@ -25,6 +25,7 @@ export interface UserType {
   providerAccountId: string; // Store the unique provider account ID
   password?: string; // For credentials-based login, if password is needed
   bookmarks?: string[];
+  createdAt: Date;
 }
 
 export interface ProcessedSearchParams {
