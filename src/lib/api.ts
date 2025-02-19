@@ -74,4 +74,11 @@ export const api = {
         body: JSON.stringify(data),
       }),
   },
+  global: {
+    global_search: (data: { search: string; filter: string }) =>
+      fetchHandler(`${API_BASE_URL}/globalSearch`, {
+        method: "POST",
+        body: JSON.stringify(data),
+      }),
+  },
 };

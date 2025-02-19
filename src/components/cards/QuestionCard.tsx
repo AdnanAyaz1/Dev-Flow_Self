@@ -33,6 +33,7 @@ const QuestionCard = ({
     },
     { icon: "/icons/view.svg", number: question.views, text: "Views" },
   ];
+
   return (
     <div className="relative z-10">
       <div
@@ -92,7 +93,7 @@ const QuestionCard = ({
       </div>
       {userId == question?.author._id && (
         <Link
-          className="absolute right-12 z-20 top-10"
+          className={`absolute ${bookmark ? "right-20" : "right-12"}  z-20 top-10`}
           href={routes.edit_question(JSON.parse(JSON.stringify(question._id)))}
         >
           <Edit2Icon className="w-6 h-4 text-blue-700" />

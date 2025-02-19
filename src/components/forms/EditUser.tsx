@@ -57,7 +57,7 @@ const EditUser = ({ user }: { user: UserType }) => {
           description: res.message,
           variant: "success",
         });
-        router.push(`/user`);
+        router.push(`/user/${user._id}`);
       } else {
         toast({
           title: "Error",
@@ -93,8 +93,6 @@ const EditUser = ({ user }: { user: UserType }) => {
         )}
 
         {Object.keys(defaultValues).map((val, i) => {
-          // Exclude "image" from default form fields
-
           return (
             <FormField
               key={i}

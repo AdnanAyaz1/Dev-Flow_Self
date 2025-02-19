@@ -7,4 +7,5 @@ export const routes = {
   edit_question: (id: string) => `/edit-question/${id}`,
   edit_user: (id: string) => `/user/${id}`,
   user_info: (id: string) => `/user/info/${id}`,
+  tags_info: (id: string) => `/tags/${id}`,
 };

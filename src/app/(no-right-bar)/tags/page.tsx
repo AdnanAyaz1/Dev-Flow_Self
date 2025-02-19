@@ -1,8 +1,10 @@
 import TagCard from "@/components/cards/TagCard";
 import LocalSearch from "@/components/search/LocalSearch";
 import TagSort from "@/components/sort/TagSort";
+import { routes } from "@/constants/routes";
 import Tag, { ITag } from "@/database-models/tags.model";
 import { FilterQuery } from "mongoose";
+import Link from "next/link";
 import React from "react";
 
 const page = async ({
@@ -34,7 +36,9 @@ const page = async ({
       </div>
       <div className="mt-[49px] flex flex-wrap gap-[10px]">
         {tags.map((tag, i) => (
-          <TagCard tag={tag} key={i} />
+          <Link key={i} href={routes.tags_info(tag._id)}>
+            <TagCard tag={tag} />
+          </Link>
         ))}
       </div>
     </div>

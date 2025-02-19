@@ -23,14 +23,12 @@ export async function POST(request: Request) {
 
   if (sort.includes("newest")) {
     sortCriteria = { createdAt: -1 };
-  }
-  if (sort.includes("un answered")) {
+  } else if (sort.includes("un answered")) {
     filterQuery.answers = [];
     sortCriteria = { createdAt: -1 };
-  }
-  if (sort.includes("recommended questions")) {
+  } else if (sort.includes("recommended questions")) {
     sortCriteria = { upVotes: -1 };
-  }
+  } else sortCriteria = { createdAt: 1 };
 
   const totalQuestions = await Question.countDocuments();
   const noOfPages = Math.ceil(totalQuestions / pageSize);
