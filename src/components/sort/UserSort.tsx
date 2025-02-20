@@ -31,7 +31,7 @@ const UserSort = () => {
   };
   return (
     <Select onValueChange={handleAnswerSort} value={selectedSort}>
-      <SelectTrigger className="w-fit h-[45px] no-focus bg-dark-300 text-light-700 flex-center gap-2">
+      <SelectTrigger className="w-fit h-[45px] no-focus bg-light-800 dark:bg-dark-300 dark:text-light-700 flex-center gap-2">
         <Image src={"/icons/filter.svg"} alt="filter" height={16} width={16} />
         <SelectValue placeholder="Most Popular" />
       </SelectTrigger>

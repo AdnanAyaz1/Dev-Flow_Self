@@ -10,7 +10,7 @@ const RightSidebar = async () => {
     .limit(5)
     .sort({ upVotes: -1, createdAt: -1 });
   return (
-    <div className="sticky top-0 right-0 bg-light-900 dark:bg-dark-200 z-[0] pt-[48px] min-w-[330px] w-[330px] h-[calc(100vh-100px)] border-l-[1px] px-[26px] shadow-right-sidebar-shadow dark:shadow-none overflow-y-auto custom-scrollbar pb-[33px]">
+    <div className="sticky top-0 right-0 bg-light-900 dark:bg-dark-200 z-[0] pt-[48px] min-w-[330px] w-[330px] h-[calc(100vh-100px)] border-l-[1px] px-[26px] shadow-right-sidebar-shadow dark:shadow-none overflow-y-auto custom-scrollbar pb-[33px] max-xl:hidden">
       <h3 className="h3-bold">Hot Network</h3>
       <div className="mt-[36px] flex flex-col gap-[30px]">
         {questions.map((ques, i) => (

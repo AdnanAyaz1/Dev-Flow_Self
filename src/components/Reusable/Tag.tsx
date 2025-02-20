@@ -21,7 +21,7 @@ const Tag = ({
   return (
     <div
       className={twMerge(
-        " rounded-lg px-[16px] py-[8px] bg-light-800 dark:bg-dark-400/60  uppercase flex gap-2 h-[29px] items-center w-fit",
+        " rounded-lg px-[16px] py-[8px] bg-light-800 dark:bg-dark-400/60  uppercase flex gap-2 h-[29px] items-center w-fit shadow-md",
         classNameTag
       )}
     >

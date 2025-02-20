@@ -22,7 +22,6 @@ const page = async ({
   const { id } = params;
   const session = await auth();
   const user = await User.findById(session?.user.id);
-  console.log("user", user);
   const { search, sort } = searchParams;
   const tag = await Tag.findById(id);
   const filterQuery: FilterQuery<QuestionType> = {};
@@ -57,8 +56,10 @@ const page = async ({
       <h1 className="h1-bold">
         {tag.title.toLowerCase() === "js" ? "JavaScript" : tag.title}
       </h1>
-      <h3 className="body-medium text-light-700 my-6">{tag.description}</h3>
-      <div className="flex-between max-w-[800px] my-6 gap-3">
+      <h3 className="body-medium dark:text-light-700 my-6">
+        {tag.description}
+      </h3>
+      <div className="flex flex-col  sm:flex-between max-w-[800px] my-6 gap-3">
         <LocalSearch placeholder="Question title,description" />
         <TagDetailsSort />
       </div>

@@ -114,9 +114,13 @@ const EditUser = ({ user }: { user: UserType }) => {
                       <CldUploadWidget
                         uploadPreset="DevFlow"
                         onSuccessAction={(results) => {
-                          if (results.event == "success") {
-                            setImagePreview(results?.info?.secure_url);
-                            form.setValue("image", results?.info?.secure_url);
+                          if (
+                            results.event === "success" &&
+                            typeof results.info === "object" &&
+                            results.info !== null
+                          ) {
+                            setImagePreview(results.info.secure_url);
+                            form.setValue("image", results.info.secure_url);
                           }
                         }}
                       >
@@ -124,7 +128,7 @@ const EditUser = ({ user }: { user: UserType }) => {
                           return (
                             <div
                               onClick={() => open()}
-                              className="bg-dark-400 cursor-pointer h-[50px] px-4 w-fit rounded-xl flex-center gap-2"
+                              className="dark:bg-dark-400 bg-light-800 cursor-pointer h-[50px] px-4 w-fit rounded-xl flex-center gap-2"
                             >
                               <UploadCloudIcon className="w-8 h-5 text-light-500" />
                               <span className="primary-text-gradient">

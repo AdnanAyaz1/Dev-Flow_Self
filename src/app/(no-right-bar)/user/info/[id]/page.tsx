@@ -38,40 +38,42 @@ const page = async ({
           className="rounded-full object-cover  h-[140px] w-[140px] aspect-square"
         />
         <div className="w-full mt-2">
-          <div className="flex-between w-full">
+          <div className="flex flex-col gap-2  sm:flex-between w-full">
             <h1 className="h1-bold">{user?.name}</h1>
             <Link
               href={`/user/${user?._id}`}
-              className="bg-dark-400 flex-center rounded-lg w-[173px] h-[45px]"
+              className="dark:bg-dark-400 bg-light-700 my-3 paragraph-semibold flex-center rounded-lg w-[173px] h-[45px]"
             >
               Edit Profile
             </Link>
           </div>
-          <p className=" paragraph-regular text-light-800">{user?.email}</p>
-          <div className="flex gap-[20px]">
+          <p className=" paragraph-regular dark:text-light-800">
+            {user?.email}
+          </p>
+          <div className="flex flex-wrap gap-[20px]">
             <div className="flex-center gap-2 mt-[20px]">
-              <Link2Icon className="w-4 h-4 text-light-500" />
+              <Link2Icon className="w-4 h-4 dark:text-light-500" />
               <Link
                 href={user?.portfolio || routes.edit_user(user?._id || "")}
-                className="paragraph-medium text-blue-400"
+                className="paragraph-medium dark:text-blue-400 text-blue-500"
               >
                 {user?.portfolio ? user.portfolio : "add a link"}
               </Link>
             </div>
             <div className="flex-center gap-2 mt-[20px]">
-              <MapPinCheck className="w-4 h-4 text-light-500" />
-              <p className="paragraph-medium text-light-700">
+              <MapPinCheck className="w-4 h-4 dark:text-light-500" />
+              <p className="paragraph-medium dark:text-light-700 text-dark-200">
                 {user?.location ? user.location : "add a location"}
               </p>
             </div>
             <div className="flex-center gap-2 mt-[20px]">
-              <Calendar className="w-4 h-4 text-light-500" />
-              <p className="paragraph-medium text-light-700">
+              <Calendar className="w-4 h-4 dark:text-light-500" />
+              <p className="paragraph-medium dark:text-light-700 text-dark-200">
                 Joined <span>{user?.createdAt.toDateString()}</span>
               </p>
             </div>
           </div>
-          <p className="mt-[10px] paragraph-regular text-light-700">
+          <p className="mt-[10px] paragraph-regular dark:text-light-700">
             {user?.bio}
           </p>
         </div>
@@ -80,7 +82,7 @@ const page = async ({
       <div className="mt-[40px]">
         <h1 className="h3-semibold">Stats</h1>
         <div className="mt-[21px]">
-          <div className="flex-center rounded-lg w-[257px] h-[90px] gap-[40px] bg-dark-300">
+          <div className="flex-center rounded-lg w-[257px] h-[90px] gap-[40px] dark:bg-dark-300 bg-light-800">
             <div>
               <p className="body-semibold">{questions.length}</p>
               <p className="body-regular">Questions</p>

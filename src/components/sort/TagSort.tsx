@@ -13,7 +13,7 @@ import React, { useEffect, useState } from "react";
 const TagSort = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedSort, setSelectedSort] = useState("Sort Tags"); // Default value
+  const [selectedSort, setSelectedSort] = useState("Most Popular"); // Default value
 
   useEffect(() => {
     // Get sort value from URL params
@@ -31,9 +31,9 @@ const TagSort = () => {
   };
   return (
     <Select onValueChange={handleAnswerSort} value={selectedSort}>
-      <SelectTrigger className="w-fit h-[45px] no-focus bg-dark-300 text-light-700 flex-center gap-2">
+      <SelectTrigger className="w-fit h-[45px] no-focus bg-light-800 dark:bg-dark-300 dark:text-light-700 flex-center gap-2">
         <Image src={"/icons/filter.svg"} alt="filter" height={16} width={16} />
-        <SelectValue placeholder="Sort Tags" />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="Most Popular">Most Popular</SelectItem>

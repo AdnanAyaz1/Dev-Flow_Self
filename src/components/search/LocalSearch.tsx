@@ -30,7 +30,7 @@ export default function LocalSearch({ placeholder }: { placeholder: string }) {
   };
 
   return (
-    <div className="md:flex gap-4 p-[16px] border-[1px] rounded-lg border-light-700 bg-light-800 flex-1 dark:dark-gradient dark:border-none hidden self-center my-[30px] h-[56px]">
+    <div className="flex gap-4 p-[16px] border-[1px] rounded-lg border-light-700 bg-light-800 flex-1 dark:dark-gradient dark:border-none  sm:self-center my-[30px] h-[56px] shadow-sm">
       <Search className="w-[24px] h-[24px] text-light-400" />
       <input
         type="text"

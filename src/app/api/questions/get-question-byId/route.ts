@@ -19,8 +19,8 @@ export async function POST(req: Request) {
       );
     }
     if (userId) {
-      if (userId !== question.author.toString()) {
-        const hasViewed = question.viewedBy.includes(userId);
+      if (userId !== question?.author?.toString()) {
+        const hasViewed = question?.viewedBy?.includes(userId);
         if (!hasViewed) {
           await Question.findByIdAndUpdate(questionId, {
             $inc: { views: 1 },
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
   } catch (error) {
     return NextResponse.json(
       {
-        error: error instanceof Error ? error.message : "Something went wrong",
+        error: error instanceof Error ? error : "Something went wrong",
       },
       { status: 500 }
     );

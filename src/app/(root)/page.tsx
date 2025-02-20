@@ -30,7 +30,7 @@ export default async function Home({ searchParams }: SearchParams) {
   return (
     <main className="min-h-screen flex flex-col justify-between">
       <div>
-        <div className="flex-between">
+        <div className="max-xs:flex-col flex gap-2 xs:flex-between">
           <h1 className="h1-bold">All Questions</h1>
           <Link
             href={routes.ask_question}

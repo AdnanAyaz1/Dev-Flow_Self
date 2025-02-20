@@ -32,7 +32,7 @@ const AnswersSort = () => {
 
   return (
     <Select onValueChange={handleAnswerSort} value={selectedSort}>
-      <SelectTrigger className="w-[180px] no-focus bg-dark-300 text-light-700 flex-center gap-2">
+      <SelectTrigger className="w-[180px] no-focus dark:bg-dark-300 bg-light-800 dark:text-light-700 flex-center gap-2">
         <Image src={"/icons/filter.svg"} alt="filter" height={16} width={16} />
         <SelectValue placeholder="Oldest" />
       </SelectTrigger>

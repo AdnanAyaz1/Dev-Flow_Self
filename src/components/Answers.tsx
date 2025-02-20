@@ -29,7 +29,7 @@ const Answers = async ({ id }: { id: string }) => {
                 width={25}
                 className="aspect-square object-cover rounded-full"
               />
-              <p className="paragraph-semibold text-light-800">
+              <p className="paragraph-semibold dark:text-light-800">
                 {answer?.author.name}
               </p>
             </div>

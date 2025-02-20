@@ -22,7 +22,6 @@ const page = async ({
       { email: new RegExp(search, "i") },
     ];
   }
-  console.log("sort", sort);
   type SortCriteria = Record<string, SortOrder>;
   const sortCriteria: SortCriteria = {};
   if (sort == "Highest Reputation") {
@@ -34,7 +33,7 @@ const page = async ({
   return (
     <div>
       <h1 className="h1-bold">All Users</h1>
-      <div className="flex-between my-[50px] gap-6 max-w-[800px]">
+      <div className="flex max-sm:flex-col max-sm:gap-2 max-sm:items-start max-sm:justify-start  sm:flex-between my-[20px] gap-6 max-w-[800px]">
         <LocalSearch placeholder="Username" />
         <UserSort />
       </div>
@@ -44,7 +43,7 @@ const page = async ({
             <Link
               href={routes.user_info(user._id)}
               key={key}
-              className="w-[260px] py-[30px] rounded-[10px] bg-dark-300 border-[1px] border-dark-400 flex-center flex-col gap-2"
+              className="w-[260px] py-[30px] rounded-[10px] dark:bg-dark-300 border-[1px] dark:border-dark-400 bg-light-850/70 shadow-md border-light-800 flex-center flex-col gap-2"
             >
               <Image
                 src={user.image || "/images/person-placeholder.jpeg"}

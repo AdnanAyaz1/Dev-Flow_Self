@@ -35,7 +35,7 @@ export default async function MobileNavigation() {
         </SheetHeader>
         <div className="flex flex-col flex-1 justify-between gap-10   mt-[66px] pb-[33px]">
           {/* Links */}
-          <SidebarLinks />
+          <SidebarLinks isMobileNav={true} />
           {/* Auth Buttons */}
           {session?.user ? <LogoutButton /> : <AuthButtons />}
         </div>

@@ -19,7 +19,7 @@ const SidebarLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
         const sideBarLink = (
           <Link
             href={link.route}
-            className={`flex gap-4 p-4 ${isActive ? "primary-gradient rounded-lg " : ""} `}
+            className={`flex gap-4 p-4 ${isActive ? "primary-gradient rounded-lg" : ""} ${isMobileNav ? "" : " max-lg:w-fit"} `}
             key={i}
           >
             <Image
@@ -30,7 +30,7 @@ const SidebarLinks = ({ isMobileNav = false }: { isMobileNav?: boolean }) => {
               className={`${isActive ? "" : "invert-colors"}`}
             />
             <h3
-              className={`${isActive ? "invert-colors" : ""} base-bold line-clamp-1`}
+              className={`${isActive ? "invert-colors" : ""} base-bold line-clamp-1 ${isMobileNav ? "" : "max-lg:hidden"} `}
             >
               {link.link}
             </h3>

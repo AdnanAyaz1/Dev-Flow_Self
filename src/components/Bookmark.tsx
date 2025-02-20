@@ -68,6 +68,7 @@ const Bookmark = ({
           alt="bookmarked-icon"
           height={15}
           width={15}
+          className="aspect-square min-w-[15px] min-h-[15px]"
         />
       ) : (
         <Image
@@ -75,6 +76,7 @@ const Bookmark = ({
           alt="bookmark-icon"
           height={15}
           width={15}
+          className="aspect-square"
         />
       )}
     </div>

@@ -37,7 +37,7 @@ const HomeTagFilter = () => {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-4 ">
       {tags.map((tag, i) => (
         <div key={i} onClick={() => toggleTagSelection(tag)}>
           <Tag

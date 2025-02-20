@@ -11,7 +11,7 @@ const SavedQuestions = async ({
   userId: string;
   bookmarks: string[];
 }) => {
-  const question = await Question.findById(questionId);
+  const question = await Question.findById(questionId).populate("author");
   return (
     <QuestionCard
       question={JSON.parse(JSON.stringify(question))}

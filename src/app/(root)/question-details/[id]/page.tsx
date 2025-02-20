@@ -60,7 +60,7 @@ const QuestionDetails = async ({
                 width={25}
                 className="object-cover rounded-full aspect-square"
               />
-              <p className="paragraph-semibold text-light-700">
+              <p className="paragraph-semibold dark:text-light-700">
                 {question?.author.name}
               </p>
             </div>

@@ -67,7 +67,7 @@ const GlobalSearch = () => {
     >
       <GlobalSearchInput value={search} onChange={setSearch} />
       {isOpen && (
-        <div className="mt-3 bg-dark-400 p-[25px] absolute w-full rounded-xl">
+        <div className="mt-3 bg-light-800 shadow-md dark:bg-dark-400 p-[25px] absolute w-full rounded-xl">
           <GlobalSearchFilter value={filter} onChange={setFilter} />
           <div className="w-full h-[1px] bg-light-500"></div>
           <div className="p-[25px]">
@@ -97,6 +97,7 @@ const GlobalSearch = () => {
                         alt="icon"
                         height={18}
                         width={18}
+                        className="invert dark:invert-0"
                       />
                       <div className="space-y-1">
                         <p className="paragraph-semibold">

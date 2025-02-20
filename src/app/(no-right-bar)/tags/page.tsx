@@ -12,7 +12,7 @@ const page = async ({
 }: {
   searchParams: { search: string; sort: string };
 }) => {
-  const { search, sort } = await searchParams;
+  const { search, sort } = searchParams;
   const filterQuery: FilterQuery<ITag> = {};
   if (search) {
     filterQuery.$or = [
@@ -30,7 +30,7 @@ const page = async ({
   return (
     <div>
       <h1 className="h1-bold">Tags</h1>
-      <div className=" flex-center gap-[45px]">
+      <div className="flex max-sm:flex-col max-sm:gap-2 max-sm:items-start max-sm:justify-start  sm:flex-between my-[20px] gap-6 max-w-[800px]">
         <LocalSearch placeholder={"tag"} />
         <TagSort />
       </div>

@@ -8,8 +8,7 @@ export async function PATCH(req: Request) {
     await dbConnect();
     const id = data._id;
     delete data["_id"];
-    const iser = await User.findByIdAndUpdate(id, data, { new: true });
-    console.log(iser);
+     await User.findByIdAndUpdate(id, data, { new: true });
     return NextResponse.json(
       { success: true, message: "User Updated" },
       { status: 200 }

@@ -4,7 +4,7 @@ import Tag from "../Reusable/Tag";
 
 const TagCard = ({ tag }: { tag: ITag }) => {
   return (
-    <div className="px-[30px] py-[40px] flex flex-col rounded-lg  bg-dark-300 w-[260px] h-[243px]">
+    <div className="px-[30px] py-[40px] flex flex-col rounded-lg bg-light-850/70 dark:bg-dark-300 w-[260px] h-[243px] shadow-md">
       <Tag tag={tag.title} icon={true} />
       {/* desc */}
       <div className="flex justify-between flex-col flex-1">

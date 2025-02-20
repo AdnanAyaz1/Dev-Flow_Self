@@ -19,7 +19,7 @@ const GlobalSearchFilter = ({
           <div
             key={i}
             onClick={() => handleClick(opt)}
-            className={`${value == opt ? "primary-gradient" : "bg-dark-200"} cursor-pointer w-[93px] h-[36px] text-white flex-center rounded-[40px]`}
+            className={`${value == opt ? "primary-gradient text-white" : "bg-light-700 dark:bg-dark-200"} cursor-pointer w-[93px] h-[36px] dark:text-white flex-center rounded-[40px]`}
           >
             {opt}
           </div>

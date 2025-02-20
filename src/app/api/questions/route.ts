@@ -38,7 +38,7 @@ export async function POST(request: Request) {
           });
 
           const description =
-            response?.choices?.[0]?.message?.content?.trim() ||
+            response?.choices?.[0]?.message?.trim() ||
             "No description available.";
 
           // If API fails, delete the created question and return an error

@@ -10,7 +10,6 @@ const page = async ({ searchParams }: SearchParams) => {
   const awaitedParams = await searchParams;
   const index = awaitedParams.index;
   const session = await auth();
-  console.log(session);
   const user = await User.findById(session?.user.id);
   const userId = user ? JSON.parse(JSON.stringify(user?._id)) : "";
   const bookmarks = user?.bookmarks;
