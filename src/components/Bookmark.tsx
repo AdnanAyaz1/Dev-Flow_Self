@@ -1,6 +1,6 @@
 // In your Bookmark component:
 "use client";
-import { handleQuestionBookmark } from "@/app/actions/handleBookmark";
+import { handleQuestionBookmark } from "@/app/server-actions/handleBookmark";
 import { toast } from "@/hooks/use-toast";
 import Image from "next/image";
 import { useRouter } from "next/navigation";

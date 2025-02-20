@@ -1,4 +1,5 @@
 import { tagMap } from "@/constants/tagMap";
+import { tagMappings } from "@/constants/tagMapping";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -12,6 +13,11 @@ export const getDeviconClass = (tag: string) => {
   return tagMap[normalizedTechName]
     ? `${tagMap[normalizedTechName]} colored`
     : "devicon-devicon-plain"; // Example: devicon-javascript-plain
+};
+
+export const normalizeTag = (tag: string): string => {
+  const normalizedTag = tag.trim().toLowerCase().replace(/\./g, ""); // Remove dots
+  return tagMappings[normalizedTag] || normalizedTag;
 };
 
 export const formatNumber = (num: number): string => {

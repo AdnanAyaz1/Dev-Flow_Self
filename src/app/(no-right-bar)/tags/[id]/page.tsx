@@ -1,7 +1,8 @@
 import { auth } from "@/auth";
 import QuestionCard from "@/components/cards/QuestionCard";
 import LocalSearch from "@/components/search/LocalSearch";
-import TagDetailsSort from "@/components/sort/TagDetailsSort";
+import Sort from "@/components/sort/Sort";
+import { tagDetailsSort } from "@/constants/SortOptions";
 import Question from "@/database-models/question.model";
 import Tag from "@/database-models/tags.model";
 import User from "@/database-models/user.model";
@@ -59,9 +60,9 @@ const page = async ({
       <h3 className="body-medium dark:text-light-700 my-6">
         {tag.description}
       </h3>
-      <div className="flex flex-col  sm:flex-between max-w-[800px] my-6 gap-3">
+      <div className="flex max-sm:flex-col  sm:flex-between max-w-[800px] my-6 gap-3">
         <LocalSearch placeholder="Question title,description" />
-        <TagDetailsSort />
+        <Sort data={tagDetailsSort} />
       </div>
       <div className="space-y-3">
         {parsedQuestions &&

@@ -8,7 +8,6 @@ import dbConnect from "@/lib/database-connection";
 
 export async function POST(req: Request) {
   const params = await req.json();
-  console.log("params", params);
   await dbConnect();
   const filterQuery: FilterQuery<QuestionType | UserType | ITag> = {};
   if (params.filter == "Question") {
@@ -36,15 +35,13 @@ export async function POST(req: Request) {
       },
     ];
   }
-
   const model =
     params.filter == "Question"
       ? Question
       : params.filter == "Tag"
         ? Tag
         : User;
-  console.log("model", model);
+  
   const res = await model.find(filterQuery).limit(5);
-  console.log(res);
   return NextResponse.json({ success: true, data: res });
 }

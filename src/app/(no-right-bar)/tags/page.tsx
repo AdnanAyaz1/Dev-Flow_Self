@@ -1,7 +1,8 @@
 import TagCard from "@/components/cards/TagCard";
 import LocalSearch from "@/components/search/LocalSearch";
-import TagSort from "@/components/sort/TagSort";
+import Sort from "@/components/sort/Sort";
 import { routes } from "@/constants/routes";
+import { tagSort } from "@/constants/SortOptions";
 import Tag, { ITag } from "@/database-models/tags.model";
 import { FilterQuery } from "mongoose";
 import Link from "next/link";
@@ -32,7 +33,7 @@ const page = async ({
       <h1 className="h1-bold">Tags</h1>
       <div className="flex max-sm:flex-col max-sm:gap-2 max-sm:items-start max-sm:justify-start  sm:flex-between my-[20px] gap-6 max-w-[800px]">
         <LocalSearch placeholder={"tag"} />
-        <TagSort />
+        <Sort data={tagSort} />
       </div>
       <div className="mt-[49px] flex flex-wrap gap-[10px]">
         {tags.map((tag, i) => (

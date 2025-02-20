@@ -5,8 +5,9 @@ import Preview from "@/components/editor/Preview";
 import AnswerForm from "@/components/forms/AnswerForm";
 import QuestionCardStats from "@/components/Reusable/QuestionCardStats";
 import Tag from "@/components/Reusable/Tag";
-import AnswersSort from "@/components/sort/AnswersSort";
+import Sort from "@/components/sort/Sort";
 import Votes from "@/components/vote/Votes";
+import { answerSort } from "@/constants/SortOptions";
 import User from "@/database-models/user.model";
 import { api } from "@/lib/api";
 import { formatDistanceToNow } from "date-fns";
@@ -43,7 +44,7 @@ const QuestionDetails = async ({
     },
     { icon: "/icons/view.svg", number: question?.views, text: "Views" },
   ];
-
+ 
   return (
     <>
       {question && (
@@ -135,7 +136,8 @@ const QuestionDetails = async ({
                     {question.answers.length} Answers
                   </span>
                 </h1>
-                <AnswersSort />
+                <Sort data={answerSort} />
+                {/* <AnswersSort /> */}
               </div>
 
               <AnswersFetch

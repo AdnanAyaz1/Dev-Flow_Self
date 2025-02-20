@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { routes } from "@/constants/routes";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/lib/api";
+import { normalizeTag } from "@/lib/utils";
 import { questionSchema } from "@/lib/zod-validation-schemas";
 import { QuestionType } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -99,7 +100,7 @@ const QuestionForm = ({
   ) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      const tagInput = e.currentTarget.value
+      const tagInput = normalizeTag(e.currentTarget.value)
         .trim()
         .toLowerCase()
         .replace(/\./g, ""); // Remove dots

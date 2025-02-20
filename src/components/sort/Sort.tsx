@@ -7,13 +7,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
-const AnswersSort = () => {
+const Sort = ({ data }: { data: string[] }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedSort, setSelectedSort] = useState("Oldest"); // Default value
+  const [selectedSort, setSelectedSort] = useState(data[0]); // Default value
 
   useEffect(() => {
     // Get sort value from URL params
@@ -32,18 +33,19 @@ const AnswersSort = () => {
 
   return (
     <Select onValueChange={handleAnswerSort} value={selectedSort}>
-      <SelectTrigger className="w-[180px] no-focus dark:bg-dark-300 bg-light-800 dark:text-light-700 flex-center gap-2">
+      <SelectTrigger className="w-[180px] h-[51px] no-focus dark:bg-dark-300 bg-light-800 dark:text-light-700 flex-center gap-2">
         <Image src={"/icons/filter.svg"} alt="filter" height={16} width={16} />
-        <SelectValue placeholder="Oldest" />
+        <SelectValue />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="Newest">Newest</SelectItem>
-        <SelectItem value="Oldest">Oldest</SelectItem>
-        <SelectItem value="Most Popular">Most Popular</SelectItem>
-        <SelectItem value="Least Popular">Least Popular</SelectItem>
+        {data.map((sort) => (
+          <SelectItem key={sort} value={sort}>
+            {sort}
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );
 };
 
-export default AnswersSort;
+export default Sort;

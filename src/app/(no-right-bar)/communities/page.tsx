@@ -1,6 +1,7 @@
 import LocalSearch from "@/components/search/LocalSearch";
-import UserSort from "@/components/sort/UserSort";
+import Sort from "@/components/sort/Sort";
 import { routes } from "@/constants/routes";
+import { userSort } from "@/constants/SortOptions";
 import User from "@/database-models/user.model";
 import { UserType } from "@/types/types";
 import { FilterQuery, SortOrder } from "mongoose";
@@ -35,7 +36,7 @@ const page = async ({
       <h1 className="h1-bold">All Users</h1>
       <div className="flex max-sm:flex-col max-sm:gap-2 max-sm:items-start max-sm:justify-start  sm:flex-between my-[20px] gap-6 max-w-[800px]">
         <LocalSearch placeholder="Username" />
-        <UserSort />
+        <Sort data={userSort} />
       </div>
       <div className="flex flex-wrap gap-3">
         {users.map((user: UserType, key) => {
