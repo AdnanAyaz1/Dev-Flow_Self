@@ -1,3 +1,4 @@
+export const runtime = "nodejs"; // Force Node.js runtime
 import { QuestionType, UserType } from "./../../../types/types";
 import Question from "@/database-models/question.model";
 import { FilterQuery } from "mongoose";
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
       : params.filter == "Tag"
         ? Tag
         : User;
-  
+
   const res = await model.find(filterQuery).limit(5);
   return NextResponse.json({ success: true, data: res });
 }

@@ -1,3 +1,4 @@
+export const runtime = "nodejs"; // Force Node.js runtime
 import User from "@/database-models/user.model";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
@@ -8,7 +9,7 @@ export async function PATCH(req: Request) {
     await dbConnect();
     const id = data._id;
     delete data["_id"];
-     await User.findByIdAndUpdate(id, data, { new: true });
+    await User.findByIdAndUpdate(id, data, { new: true });
     return NextResponse.json(
       { success: true, message: "User Updated" },
       { status: 200 }

@@ -1,3 +1,4 @@
+export const runtime = "nodejs"; // Force Node.js runtime
 import Answer from "@/database-models/answer.model";
 import Question, { VoteCaster } from "@/database-models/question.model";
 import User from "@/database-models/user.model";
