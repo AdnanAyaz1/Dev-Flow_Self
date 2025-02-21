@@ -25,10 +25,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
         if (user && isValid)
           return {
-            id: user._id.toString(),
-            email: user.email,
-            name: user.name,
-            image: user.image,
+            id: user._id.toString() as string,
+            email: user.email as string,
+            name: user.name as string,
+            image: user.image as string,
             provider: "credentials", // Explicitly set provider for credentials login
           };
         else return null;

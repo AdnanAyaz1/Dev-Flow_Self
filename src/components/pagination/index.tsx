@@ -38,7 +38,7 @@ export const PaginationComponent = ({ noOfPages }: { noOfPages: number }) => {
   );
 
   return (
-    <Pagination className="mt-8 flex justify-center">
+    <Pagination className="mt-4 flex justify-center">
       <PaginationContent className="flex gap-2">
         {/* Always show First Page when beyond page 10 */}
         {startPage > 1 && (
