@@ -27,14 +27,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
   experimental: {
-    esmExternals: "loose", // <-- add this
-    serverComponentsExternalPackages: ["mongoose"], // <-- and this
+    esmExternals: "loose",
+    serverComponentsExternalPackages: ["mongoose"],
   },
-  // and the following to enable top-level await support for Webpack
+  experiments: {
+    layers: true,
+  },
   webpack: (config) => {
     config.experiments = {
       topLevelAwait: true,
+      layers: true, // ✅ Ensure layers are enabled in Webpack as well
     };
     return config;
   },
