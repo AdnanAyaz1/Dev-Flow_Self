@@ -28,20 +28,7 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  experimental: {
-    esmExternals: "loose",
-    serverComponentsExternalPackages: ["mongoose"],
-  },
-  experiments: {
-    layers: true,
-  },
-  webpack: (config) => {
-    config.experiments = {
-      topLevelAwait: true,
-      layers: true, // ✅ Ensure layers are enabled in Webpack as well
-    };
-    return config;
-  },
+
 };
 
 export default nextConfig;
