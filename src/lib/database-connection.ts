@@ -1,3 +1,5 @@
+export const runtime = "nodejs"; // Force Node.js runtime
+
 import mongoose, { Mongoose } from "mongoose";
 import logger from "./logger";
 
