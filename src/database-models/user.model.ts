@@ -1,6 +1,6 @@
 import { Schema, model, models, Document } from "mongoose";
 
-export interface IUser {
+export interface IUser extends Document {
   name: string;
   email: string;
   bio?: string;
@@ -13,8 +13,6 @@ export interface IUser {
   password?: string; // For credentials-based login, if password is needed
   bookmarks?: string[];
 }
-
-export interface IUserDoc extends IUser, Document {}
 
 const UserSchema = new Schema<IUser>(
   {

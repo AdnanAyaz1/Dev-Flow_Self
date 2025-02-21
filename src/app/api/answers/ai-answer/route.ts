@@ -7,6 +7,7 @@ import Forefront from "forefront";
 import Answer from "@/database-models/answer.model";
 
 const client = new Forefront(process.env.AIAPIKEY!);
+export const config = { runtime: "nodejs" }; 
 
 export async function POST(req: Request) {
   const { questionId, authorId } = await req.json();
