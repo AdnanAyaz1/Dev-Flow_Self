@@ -5,7 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import User from "./models/user"; // Your User model
 import bcrypt from "bcryptjs"; // Assuming you're using bcrypt for password hashing
 import dbConnect from "./lib/database-connection";
-
+export const config = { runtime: "nodejs" };
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
     Google,

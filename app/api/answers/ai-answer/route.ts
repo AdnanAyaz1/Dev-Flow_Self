@@ -5,7 +5,6 @@ import Forefront from "forefront";
 import Answer from "@/models/answer";
 
 const client = new Forefront(process.env.AIAPIKEY!);
-export const config = { runtime: "nodejs" };
 
 export async function POST(req: Request) {
   const { questionId, authorId } = await req.json();
@@ -30,10 +29,8 @@ export async function POST(req: Request) {
       max_tokens: 50,
     });
     const response_message =
-      response?.choices?.[0]?.message?.content
-        ?.trim()
-        .toString()
-        .replace(/``/g, "") || "No description available.";
+      response?.choices?.[0]?.message?.trim().toString().replace(/``/g, "") ||
+      "No description available.";
     // If API fails, delete the created question and return an error
     if (!response_message) {
       return NextResponse.json({

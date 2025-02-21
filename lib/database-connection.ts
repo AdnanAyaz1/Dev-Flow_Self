@@ -1,5 +1,4 @@
-
-
+export const config = { runtime: "nodejs" };
 import mongoose, { Mongoose } from "mongoose";
 import logger from "./logger";
 
