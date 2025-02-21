@@ -1,4 +1,4 @@
-export const runtime = "nodejs"; // Force Node.js runtime
+
 import { NextResponse } from "next/server";
 import Question from "@/database-models/question.model";
 import dbConnect from "@/lib/database-connection";

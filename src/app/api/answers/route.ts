@@ -1,4 +1,3 @@
-export const runtime = "nodejs"; // Force Node.js runtime
 import Answer from "@/database-models/answer.model";
 import Question from "@/database-models/question.model";
 import dbConnect from "@/lib/database-connection";

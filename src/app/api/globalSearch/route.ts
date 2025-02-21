@@ -1,4 +1,4 @@
-export const runtime = "nodejs"; // Force Node.js runtime
+
 import { QuestionType, UserType } from "./../../../types/types";
 import Question from "@/database-models/question.model";
 import { FilterQuery } from "mongoose";
