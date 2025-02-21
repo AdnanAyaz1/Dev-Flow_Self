@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "./database-models/user.model"; // Your User model
+import User from "./models/user"; // Your User model
 import bcrypt from "bcryptjs"; // Assuming you're using bcrypt for password hashing
 import dbConnect from "./lib/database-connection";
 

@@ -1,4 +1,4 @@
-import { ITag } from "@/database-models/tags.model";
+import { ITag } from "@/models/tags";
 import React from "react";
 import Tag from "../Reusable/Tag";
 

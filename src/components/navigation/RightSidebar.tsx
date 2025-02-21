@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import Tag from "../Reusable/Tag";
-import TagModel from "@/database-models/tags.model";
-import Question from "@/database-models/question.model";
+import TagModel from "@/models/tags";
+import Question from "@/models/question";
 
 const RightSidebar = async () => {
   const tags = await TagModel.find().limit(5).sort({ questions: -1 });

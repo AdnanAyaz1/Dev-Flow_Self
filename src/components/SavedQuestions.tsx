@@ -1,4 +1,4 @@
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import React from "react";
 import QuestionCard from "./cards/QuestionCard";
 

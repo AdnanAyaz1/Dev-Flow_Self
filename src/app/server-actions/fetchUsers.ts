@@ -1,6 +1,6 @@
 "use server";
 
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 import { UserType } from "@/types/types";
 import { FilterQuery, SortOrder } from "mongoose";
 

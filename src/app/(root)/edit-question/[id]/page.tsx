@@ -1,5 +1,5 @@
 import QuestionForm from "@/components/forms/QuestionForm";
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import React from "react";
 

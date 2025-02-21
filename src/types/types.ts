@@ -1,4 +1,4 @@
-import { IAnswer } from "@/database-models/answer.model";
+import { IAnswer } from "@/models/answer";
 
 export interface QuestionType {
   _id: string;

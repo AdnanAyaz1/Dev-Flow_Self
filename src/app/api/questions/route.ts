@@ -1,8 +1,7 @@
-
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
-import Question from "@/database-models/question.model";
-import Tag from "@/database-models/tags.model";
+import Question from "@/models/question";
+import Tag from "@/models/tags";
 import Forefront from "forefront";
 
 const client = new Forefront(process.env.AIAPIKEY!);

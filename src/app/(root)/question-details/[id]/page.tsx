@@ -8,7 +8,7 @@ import Tag from "@/components/Reusable/Tag";
 import Sort from "@/components/sort/Sort";
 import Votes from "@/components/vote/Votes";
 import { answerSort } from "@/constants/SortOptions";
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 import { api } from "@/lib/api";
 import { formatDistanceToNow } from "date-fns";
 import Image from "next/image";
@@ -44,7 +44,7 @@ const QuestionDetails = async ({
     },
     { icon: "/icons/view.svg", number: question?.views, text: "Views" },
   ];
- 
+
   return (
     <>
       {question && (

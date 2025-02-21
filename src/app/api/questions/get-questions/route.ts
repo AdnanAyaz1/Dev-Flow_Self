@@ -1,5 +1,4 @@
-
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import { QuestionType } from "@/types/types";
 import { FilterQuery } from "mongoose";

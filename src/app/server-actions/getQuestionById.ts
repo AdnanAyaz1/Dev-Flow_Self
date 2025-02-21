@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import { routes } from "@/constants/routes";
 

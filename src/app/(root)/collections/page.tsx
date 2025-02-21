@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import LoadMore from "@/components/Reusable/LoadMore";
 
 import SavedQuestions from "@/components/SavedQuestions";
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 import React from "react";
 import { SearchParams } from "../page";
 

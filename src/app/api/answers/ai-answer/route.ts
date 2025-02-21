@@ -1,13 +1,11 @@
-
-
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
 import Forefront from "forefront";
-import Answer from "@/database-models/answer.model";
+import Answer from "@/models/answer";
 
 const client = new Forefront(process.env.AIAPIKEY!);
-export const config = { runtime: "nodejs" }; 
+export const config = { runtime: "nodejs" };
 
 export async function POST(req: Request) {
   const { questionId, authorId } = await req.json();

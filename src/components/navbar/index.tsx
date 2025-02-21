@@ -7,7 +7,7 @@ import { User2 } from "lucide-react";
 import MobileNavigation from "./MobileNavigation";
 import { auth } from "@/auth";
 import Image from "next/image";
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 import { routes } from "@/constants/routes";
 
 const Navbar = async () => {

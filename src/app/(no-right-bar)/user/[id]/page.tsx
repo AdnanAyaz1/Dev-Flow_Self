@@ -1,5 +1,5 @@
 import EditUser from "@/components/forms/EditUser";
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 import React from "react";
 
 const page = async ({ params }: { params: { id: string } }) => {

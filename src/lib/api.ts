@@ -1,5 +1,5 @@
-import { IQuestion } from "./../database-models/question.model";
-import { IUser } from "@/database-models/user.model";
+import { IQuestion } from "../models/question";
+import { IUser } from "@/models/user";
 import { fetchHandler } from "./handlers/fetchHandler";
 import { ProcessedSearchParams, UserType } from "@/types/types";
 

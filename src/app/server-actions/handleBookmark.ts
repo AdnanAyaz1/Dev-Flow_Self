@@ -1,6 +1,6 @@
 "use server";
 import dbConnect from "@/lib/database-connection";
-import User from "@/database-models/user.model";
+import User from "@/models/user";
 
 export async function handleQuestionBookmark(
   userId: string,

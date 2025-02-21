@@ -1,9 +1,8 @@
-
 import { QuestionType, UserType } from "./../../../types/types";
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import { FilterQuery } from "mongoose";
-import Tag, { ITag } from "@/database-models/tags.model";
-import User from "@/database-models/user.model";
+import Tag, { ITag } from "@/models/tags";
+import User from "@/models/user";
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/database-connection";
 

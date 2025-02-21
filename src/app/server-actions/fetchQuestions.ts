@@ -1,6 +1,6 @@
 "use server";
 
-import Question from "@/database-models/question.model";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import { QuestionType } from "@/types/types";
 import { FilterQuery } from "mongoose";
@@ -39,7 +39,6 @@ export async function fetchQuestions({
       sortCriteria = { createdAt: 1 };
     }
 
- 
     const questions = await Question.find(filterQuery)
       .skip(skip)
       .limit(limit)

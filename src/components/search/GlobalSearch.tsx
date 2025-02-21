@@ -4,7 +4,7 @@ import GlobalSearchInput from "../GlobalSearchInput";
 import GlobalSearchFilter from "../filter/GlobalSearchFilter";
 import { api } from "@/lib/api";
 import { QuestionType, UserType } from "@/types/types";
-import { ITag } from "@/database-models/tags.model";
+import { ITag } from "@/models/tags";
 import Image from "next/image";
 import Link from "next/link";
 import { routes } from "@/constants/routes";

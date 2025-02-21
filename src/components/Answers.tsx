@@ -1,4 +1,4 @@
-import Answer from "@/database-models/answer.model";
+import Answer from "@/models/answer";
 import Image from "next/image";
 import React from "react";
 import Preview from "./editor/Preview";

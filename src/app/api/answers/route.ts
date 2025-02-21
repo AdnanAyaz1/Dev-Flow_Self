@@ -1,5 +1,5 @@
-import Answer from "@/database-models/answer.model";
-import Question from "@/database-models/question.model";
+import Answer from "@/models/answer";
+import Question from "@/models/question";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
 

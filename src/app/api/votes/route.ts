@@ -1,6 +1,6 @@
-import Answer from "@/database-models/answer.model";
-import Question, { VoteCaster } from "@/database-models/question.model";
-import User from "@/database-models/user.model";
+import Answer from "@/models/answer";
+import Question, { VoteCaster } from "@/models/question";
+import User from "@/models/user";
 import dbConnect from "@/lib/database-connection";
 import { NextResponse } from "next/server";
 

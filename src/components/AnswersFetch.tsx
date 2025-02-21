@@ -1,6 +1,6 @@
 import React from "react";
 import Answers from "./Answers";
-import Answer from "@/database-models/answer.model";
+import Answer from "@/models/answer";
 
 const AnswersFetch = async ({
   sort,
